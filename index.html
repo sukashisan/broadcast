@@ -235,13 +235,13 @@
         </div>
       </div>
       <div class="card">
-        <p>待ち時間案内</p>
+        <p>待ち時間</p>
         <select id="waitTime">
-          <option value="0">0分/設定しない</option>
-          <option value="5">およそ5分</option>
-          <option value="10">およそ10分</option>
-          <option value="15">およそ15分</option>
-          <option value="20">およそ20分</option>
+          <option value="0">0分</option>
+          <option value="5">5分</option>
+          <option value="10">10分</option>
+          <option value="15">15分</option>
+          <option value="20">20分</option>
         </select>
       </div>
       <div class="card">
@@ -254,7 +254,7 @@
     <script>
     const ANNOUNCEMENTS = [
       {id:"queue",
-       name:"窓側整列案内",
+       name:"窓側整列",
        enabled:true
        }
     ];
@@ -307,7 +307,7 @@
           <div>
             <div>${item.name}</div>
               <div class="note">
-                待ち時間0分または設定しない場合は再生しません
+                待ち時間0分では再生されません
               </div>
             </div>
         `;
