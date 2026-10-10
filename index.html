@@ -63,6 +63,10 @@
       margin-bottom:15px;
       font-size:1.2rem;
     }
+    .hidden{
+   　 display:none;
+    }
+
 
     /* ===== ステータス ===== */
     .status{
@@ -223,10 +227,10 @@
         </div>
         <div class="buttons">
           <button id="startBtn" class="start">
-          ▶ 再生
+            ▶ 放送開始
           </button>
-          <button id="stopBtn" class="stop">
-          ■ 停止
+          <button id="stopBtn" class="stop hidden">
+            ■ 放送停止
           </button>
         </div>
         <div class="current">
@@ -384,11 +388,32 @@
       if(running){
         statusIcon.textContent = "🟢";
         statusText.textContent = "再生中";
-      }else{
+        startBtn.classList.add("hidden");
+        stopBtn.classList.remove("hidden");
+　    }else{
         statusIcon.textContent = "🔴";
         statusText.textContent = "停止中";
-      }
+        stopBtn.classList.add("hidden");
+        startBtn.classList.remove("hidden");
+  　　  }
     }
+    const startBtn =
+      document.getElementById("startBtn");
+    const stopBtn =
+      document.getElementById("stopBtn");
+      startBtn.addEventListener("click",()=>{
+        currentIndex = 0;
+        running = true;
+        updateStatus();
+        playCurrent();
+    });
+    stopBtn.addEventListener("click",()=>{
+      running = false;
+      player.pause();
+      player.currentTime = 0;
+      currentAudio.textContent = "なし";
+      updateStatus();
+    });
     function playCurrent(){
       if(!running){
         return;
